@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EatWhat? 🍜</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>EatWhat? 🍜</h1>
+            <p>Stop overthinking. Just eat.</p>
+        </div>
+
+        <!-- Form -->
+        <div id="form-section">
+
+            <!-- Hunger -->
+            <div class="question">
+                <label>😋 How hungry are you?</label>
+                <div class="options" id="hunger">
+                    <button class="option" data-value="just a snack">Just a snack</button>
+                    <button class="option" data-value="proper meal">Proper meal</button>
+                    <button class="option" data-value="absolutely starving">Starving 🐷</button>
+                </div>
+            </div>
+
+            <!-- Laziness -->
+            <div class="question">
+                <label>🛋️ How lazy are you right now?</label>
+                <div class="options" id="laziness">
+                    <button class="option" data-value="deliver to me">Deliver it 🛵</button>
+                    <button class="option" data-value="nearby only">Nearby only</button>
+                    <button class="option" data-value="I can travel">Can travel</button>
+                </div>
+            </div>
+
+            <!-- Budget -->
+            <div class="question">
+                <label>💸 What's your budget?</label>
+                <div class="options" id="budget">
+                    <button class="option" data-value="under $5">Under $5</button>
+                    <button class="option" data-value="$5 to $15">$5–$15</button>
+                    <button class="option" data-value="$15 and above">$15+</button>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="question">
+                <label>📍 Where are you right now?</label>
+                <div class="autocomplete-wrapper">
+                    <input type="text" id="location" class="input-field"
+                        placeholder="e.g. Woodlands, Orchard, Tampines..." autocomplete="off" />
+                    <div class="dropdown" id="location-dropdown"></div>
+                </div>
+            </div>
+
+            <!-- Extra Description -->
+            <div class="question">
+                <label>✨ Extra Description</label>
+                <input type="text" id="extraDescription" class="input-field"
+                    placeholder="e.g. Only within the mall..." />
+            </div>
+
+            <!-- Restrictions -->
+            <div class="question">
+                <label>🚫 Any dietary restrictions?</label>
+                <input type="text" id="restrictions" class="input-field"
+                    placeholder="e.g. halal, vegetarian, no seafood (or leave blank)" />
+            </div>
+
+            <button class="btn-submit" id="submit-btn" onclick="getRecommendation()">
+                🍽️ Tell Me What To Eat
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <span class="spinner">🍳</span>
+            <p>Finding the perfect meal for you...</p>
+        </div>
+
+        <!-- Result -->
+        <div class="result" id="result">
+            <div class="result-dish" id="result-dish"></div>
+            <div class="result-reason" id="result-reason"></div>
+            <div class="result-details">
+                <div class="detail-item">
+                    <div class="detail-label">📍 Where</div>
+                    <div class="detail-value" id="result-where"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">🚗 How</div>
+                    <div class="detail-value" id="result-how"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">💰 Price</div>
+                    <div class="detail-value" id="result-price"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">⏱️ Time</div>
+                    <div class="detail-value" id="result-time"></div>
+                </div>
+            </div>
+
+            <!-- Address and Maps link -->
+            <div class="result-address" id="result-address-section">
+                <div class="detail-label">🗺️ Address</div>
+                <div class="address-value" id="result-address"></div>
+                <a id="result-maps-link" href="#" target="_blank" class="btn-maps">
+                    📍 Open in Google Maps
+                </a>
+            </div>
+
+            <button class="btn-again" onclick="tryAgain()">
+                🔄 Give me another option
+            </button>
+            <button class="btn-again" onclick="location.reload()">
+                🏠 Home
+            </button>
+        </div>
+
+        <!-- Error -->
+        <div class="error" id="error">
+            <p>😕 Something went wrong. Please try again.</p>
+        </div>
+
+    </div>
+
+    <script src="js/autoComplete.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
